@@ -27,18 +27,15 @@
             <li class="nav-item">
             <a class="nav-link " href="index.jsp">Sign In</a>
             </li>
-            <li class="nav-item active">
-            <a class="nav-link" href="#">Sign Up</a>
+            <li class="nav-item">
+            <a class="nav-link  active" href="#">Sign Up</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="about.html">About</a>
             </li>
             </ul>
             </nav>
-       
-        <%
-            
-            %>
+      
       <form class="form-signin" action="signup.jsp" method="post" align="center" >
         <h2 class="form-signin-heading" align="center">Please Sign Up </h2>
         <div align="center" >

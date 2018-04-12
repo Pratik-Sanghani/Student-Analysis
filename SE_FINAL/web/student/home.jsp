@@ -18,7 +18,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style=" margin-top: -40px; ">
+    <body>
             <nav class="navbar navbar-dark  bg-dark">
             <a class="navbar-brand" href="#"><img src="Images/my.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
             <ul class="nav nav-tabs">
@@ -53,12 +53,10 @@
             }
            }
            if("new".equals(user)){
-                   %>
-                   <h3 style="font-family: Comic Sans MS">You are a new user...<a href="new_data_entry.jsp" >Click me </a> to enter Your Basic Data...</h3>
-            <%
+                out.print("<h3 style='font-family: Comic Sans MS'>You are a new user...<a href='new_data_entry.jsp?username="+username+"'>Click me </a> to enter Your Basic Data...</h3>");
+           
                 }
               
         %>
-     
     </body>
 </html>
