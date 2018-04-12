@@ -60,19 +60,20 @@
 </form>
         <% 
     try{
+        String username = request.getParameter("username");
         String utype = request.getParameter("utype");
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
         String q = "select * from logintable where username=? and password=? and utype=?";
         PreparedStatement pst = con.prepareStatement(q);
-        pst.setString(1,request.getParameter("username"));
+        pst.setString(1,username);
         pst.setString(2,request.getParameter("password"));
         pst.setString(3,utype);
         ResultSet rs = pst.executeQuery();      
         if(rs.next()){
-                out.print(utype);
-                if("Student".equals(utype)){response.sendRedirect("student/home.jsp");}
-                if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp");}
+                
+                if("Student".equals(utype)){response.sendRedirect("student/home.jsp?user=old&username="+username);}
+                if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp?user=old&username="+username);}
                
             }
          else{out.println(" <h3 align='center'  style='color: red'>Please Select User Type....</h3>");}

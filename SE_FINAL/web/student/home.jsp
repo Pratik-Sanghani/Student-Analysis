@@ -4,6 +4,7 @@
     Author     : Pratik
 --%>
 
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -33,7 +34,31 @@
             </ul>
             </nav>
        
-     
+        <%
+           String username = request.getParameter("username");
+           String user = request.getParameter("user");
+          Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
+        String q = "select * from studentdata where username=?";
+        PreparedStatement pst = con.prepareStatement(q);
+        pst.setString(1,username);
+        ResultSet rs = pst.executeQuery();
+        while(rs.next()){
+            String name=rs.getString("name");
+        
+           if("old".equals(user)){
+        %>
+        <h3 style="font-family: Comic Sans MS">Welcome Back <%= name%></h3>
+        <%
+            }
+           }
+           if("new".equals(user)){
+                   %>
+                   <h3 style="font-family: Comic Sans MS">You are a new user...<a href="new_data_entry.jsp" >Click me </a> to enter Your Basic Data...</h3>
+            <%
+                }
+              
+        %>
      
     </body>
 </html>
