@@ -68,7 +68,8 @@
         pst.setString(5,request.getParameter("branch"));
         pst.setInt(6,Integer.parseInt(request.getParameter("gyear")));
         pst.executeUpdate();
-        }catch(Exception e){out.print(e);}
+        response.sendRedirect("home.jsp?user=old");
+        }catch(Exception e){out.print("");}
             %>
        
     </body>

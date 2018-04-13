@@ -39,19 +39,13 @@
         <%
             String username = request.getParameter("username");
 
-       out.println(" <input type='text' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
+       out.println(" <input type='hidden' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
             %>
-        <br/>
-        <input type="number" id="inputno" class="form-control" placeholder="Enrollment no" name="enrollment" required autofocus>
         <br/>
         <input type="text" id="inputname" class="form-control" placeholder="Name" name="name" required>
         <br/>
-        <input type="number" id="inputsem" class="form-control" placeholder="Semester" name="sem" required>
-        <br/>
         <input type="text" id="inputbranch" class="form-control" placeholder="Branch" name="branch" required>
         <br/>
-        <input type="number" id="inputgyear" class="form-control" placeholder="Year of Graduation" name="gyear" required>
-          
         <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
     </form>        
         
@@ -59,14 +53,11 @@
         try{
           Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
-        String q = "insert into studentdata values(?,?,?,?,?,?)";
+        String q = "insert into profdata values(?,?,?)";
         PreparedStatement pst = con.prepareStatement(q);
         pst.setString(1,username);
-        pst.setInt(2,Integer.parseInt(request.getParameter("enrollment")));
-        pst.setString(3,request.getParameter("name"));
-        pst.setInt(4,Integer.parseInt(request.getParameter("sem")));
-        pst.setString(5,request.getParameter("branch"));
-        pst.setInt(6,Integer.parseInt(request.getParameter("gyear")));
+        pst.setString(2,request.getParameter("name"));
+        pst.setString(3,request.getParameter("branch"));
         pst.executeUpdate();
         response.sendRedirect("home.jsp?user=old");
         }catch(Exception e){out.print("");}

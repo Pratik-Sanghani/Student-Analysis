@@ -53,7 +53,7 @@
             }
            }
            if("new".equals(user)){
-                out.print("<h3 style='font-family: Comic Sans MS'>You are a new user...<a href='new_data_entry.jsp?username="+username+"'>Click me </a> to enter Your Basic Data...</h3>");
+                out.print("<h3>You are a new user...<a href='new_data_entry.jsp?username="+username+"'>Click me </a> to enter Your Basic Data...</h3>");
            
                 }
               
