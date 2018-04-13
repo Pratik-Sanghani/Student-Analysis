@@ -48,15 +48,19 @@
         
            if("old".equals(user)){
         %>
-        <h3 style="font-family: Comic Sans MS">Welcome Back <%= name%></h3>
+        <div class="alert alert-info" role="alert" >
+        <h3>Welcome Back <%= name%></h3>
+        </div>
         <%
             }
            }
            if("new".equals(user)){
+                out.print("<div class='alert alert-info' role='alert' >");
                 out.print("<h3>You are a new user...<a href='new_data_entry.jsp?username="+username+"'>Click me </a> to enter Your Basic Data...</h3>");
-           
+                out.print("</div>");
                 }
               
         %>
     </body>
 </html>
+

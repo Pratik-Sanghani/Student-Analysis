@@ -79,9 +79,9 @@
          else{out.println(" <h3 align='center'  style='color: red'>Please Select User Type....</h3>");}
     }catch(Exception e){out.print(e);}
   %>
-  <%@include file="footer.jsp" %>                         
+                      
   </body>
-  
+  <%@include file="footer.jsp" %>   
     
 </html>
 
