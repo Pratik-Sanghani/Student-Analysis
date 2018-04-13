@@ -22,7 +22,7 @@
     <!--Copyright-->
     
     <div class="footer-copyright py-3 text-center">
-        -<em>Developed by chromoSPPherics.....</em><br>
+        -<em>Developed by chromoSPPHerics.....</em><br>
         © 2018 Copyright:
         <a href="about.html"> StudentAdda.com </a>
     </div>
