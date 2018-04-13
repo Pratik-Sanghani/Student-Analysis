@@ -19,7 +19,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body>
+    <body style="margin-top: -40px;">
             <nav class="navbar navbar-dark  bg-dark">
             <a class="navbar-brand" href="#"><img src="Images/my.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
             <ul class="nav nav-tabs">
@@ -36,6 +36,7 @@
             </nav>
        
         <%
+            try{
            String username = request.getParameter("username");
            String user = request.getParameter("user");
           Class.forName("com.mysql.jdbc.Driver");
@@ -50,25 +51,40 @@
            if("old".equals(user)){
         %>
         <div class="alert alert-info" role="alert" >
-        <h3 style="font-family: Comic Sans MS">Welcome Back <%= name%></h3>
+        <h3 style="font-family: Comic Sans MS">Welcome Back , <%= name%></h3>
         </div>
+        
         <div class="list-group">
             
         <div class="row">
             <div class="col-4">
                 <div class="list-group" id="list-tab" role="tablist">
-                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                    <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+                    <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Display Grade history</a>
+                    <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Add Marks</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Update Marks</a>
                 </div>
             </div>
             <div class="col-8">
                 <div class="tab-content" id="nav-tabContent">
-                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"><h1>Hell</h1></div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
+                    <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
+                        <%
+                        %>
+                    </div>
+                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        <form class='form-signin' action='add_sub.jsp' method='post' align='center' >
+                        <h2 class="form-signin-heading" align="center">Please Enter your Details...</h2><br/>
+                        <%
+                           out.println(" <input type='hidden' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
+                        %>
+                        <br/>
+                        <input type="number" id="inputno" class="form-control" placeholder="Semester" name="sem1" required autofocus>
+                        <br/>
+                        <input type="text" id="inputname" class="form-control" placeholder="No. of Subject" name="subno" required>
+                        <br/>
+                        <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
+                         </form>
+                    </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                    <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
                 </div>
             </div>
         </div>
@@ -82,7 +98,7 @@
                 out.print("<h3>You are a new user...<a href='new_data_entry.jsp?username="+username+"'>Click me </a> to enter Your Basic Data...</h3>");
                 out.print("</div>");
                 }
-              
+}catch(Exception e){out.print(e);}
         %>
     </body>
 </html>
