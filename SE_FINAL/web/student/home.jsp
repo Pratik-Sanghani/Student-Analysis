@@ -42,7 +42,6 @@
          cookies = request.getCookies();
          
          if( cookies != null ) {
-            out.println("<h2> Found Cookies </h2>");
             
             try{
            String username = request.getParameter("username");
@@ -55,6 +54,7 @@
         ResultSet rs = pst.executeQuery();
         while(rs.next()){
             String name=rs.getString("name");
+            String enrollment = rs.getString("enrollment");
         
            if("old".equals(user)){
         %>
@@ -80,8 +80,24 @@
                     </div>
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                         <%
+                            String ck_password;
+                            for (int i = 0; i < cookies.length; i++) {
+                                cookie = cookies[i];
+                                if("password".equals(cookie.getName( ))){
+                                        ck_password = cookie.getValue( );}
+                            }
+                            out.println("<h3>Enrollment No. : "+enrollment+"</h3>");
                             
                         %>
+                        <form class="form-signin" action="add_sub.jsp" method="post" align="center" >
+                            <br/>
+           <h2 class="form-signin-heading" align="center">Please Enter password </h2>
+       
+        <br/>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+           <br/>
+        <button class="btn btn-lg btn-info btn-block " type="submit">Go !!</button>
+        </form>
                     </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
                 </div>
@@ -101,11 +117,7 @@
 
             }catch(Exception e){out.print(e);}
             
-            for (int i = 0; i < cookies.length; i++) {
-               cookie = cookies[i];
-               out.print("Name : " + cookie.getName( ) + ",  ");
-               out.print("Value: " + cookie.getValue( )+" <br/>");
-            }
+            
          } else {
             out.println("<h2>No cookies founds</h2>");
          }
