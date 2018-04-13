@@ -21,7 +21,7 @@
     </head>
     <body style="margin-top: -40px;">
             <nav class="navbar navbar-dark  bg-dark">
-            <a class="navbar-brand" href="#"><img src="Images/my.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
+            <a class="navbar-brand" href="#"><img src="../Images/icon.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
             <ul class="nav nav-tabs">
             <li class="nav-item">
             <a class="nav-link active" href="home.jsp">Home</a>
