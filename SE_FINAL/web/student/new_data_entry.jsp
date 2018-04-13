@@ -58,7 +58,9 @@
         
             <%
         try{
-            
+            Cookie cookie_enrollment = new Cookie("enrollment",request.getParameter("enrollment"));
+            cookie_enrollment.setMaxAge(60*60);
+            response.addCookie(cookie_enrollment);
           Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
         String q = "insert into studentdata values(?,?,?,?,?,?)";
@@ -70,7 +72,7 @@
         pst.setString(5,request.getParameter("branch"));
         pst.setInt(6,Integer.parseInt(request.getParameter("gyear")));
         pst.executeUpdate();
-        response.sendRedirect("home.jsp?user=old");
+        response.sendRedirect("home.jsp?user=old&username="+username);
         }catch(Exception e){out.print(e);}
             %>
        

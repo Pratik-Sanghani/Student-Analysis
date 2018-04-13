@@ -34,8 +34,16 @@
             </li>
             </ul>
             </nav>
-       
         <%
+       Cookie cookie = null;
+         Cookie[] cookies = null;
+         
+         // Get an array of Cookies associated with the this domain
+         cookies = request.getCookies();
+         
+         if( cookies != null ) {
+            out.println("<h2> Found Cookies </h2>");
+            
             try{
            String username = request.getParameter("username");
            String user = request.getParameter("user");
@@ -71,18 +79,9 @@
                         %>
                     </div>
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
-                        <form class='form-signin' action='add_sub.jsp' method='post' align='center' >
-                        <h2 class="form-signin-heading" align="center">Please Enter your Details...</h2><br/>
                         <%
-                           out.println(" <input type='hidden' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
+                            
                         %>
-                        <br/>
-                        <input type="number" id="inputno" class="form-control" placeholder="Semester" name="sem1" required autofocus>
-                        <br/>
-                        <input type="text" id="inputname" class="form-control" placeholder="No. of Subject" name="subno" required>
-                        <br/>
-                        <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
-                         </form>
                     </div>
                     <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
                 </div>
@@ -92,13 +91,26 @@
         <%
             
             }
-           }
-           if("new".equals(user)){
+           
+                   }
+                   if("new".equals(user)){
                 out.print("<div class='alert alert-info' role='alert' >");
                 out.print("<h3>You are a new user...<a href='new_data_entry.jsp?username="+username+"'>Click me </a> to enter Your Basic Data...</h3>");
                 out.print("</div>");
                 }
-}catch(Exception e){out.print(e);}
-        %>
+
+            }catch(Exception e){out.print(e);}
+            
+            for (int i = 0; i < cookies.length; i++) {
+               cookie = cookies[i];
+               out.print("Name : " + cookie.getName( ) + ",  ");
+               out.print("Value: " + cookie.getValue( )+" <br/>");
+            }
+         } else {
+            out.println("<h2>No cookies founds</h2>");
+         }
+       %> 
+            
+       
     </body>
 </html>

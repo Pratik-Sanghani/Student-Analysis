@@ -58,6 +58,7 @@
         String username= request.getParameter("username");
        String password = request.getParameter("password");
        String utype= request.getParameter("utype");
+       
        try{
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
@@ -67,6 +68,16 @@
         pst.setString(2,password);
         pst.setString(3,utype);
         pst.executeUpdate();
+        Cookie cookie_username = new Cookie("username",username);
+        Cookie cookie_password = new Cookie("password",password);
+        cookie_username.setMaxAge(60*60);
+        cookie_password.setMaxAge(60*60);
+        response.addCookie(cookie_username);
+        response.addCookie(cookie_password);
+        
+        Cookie cookie_utype = new Cookie("utype",utype);
+        cookie_utype.setMaxAge(60*60);
+        response.addCookie(cookie_utype);
        }catch(Exception e){out.println();}
         if("Student".equals(utype)){response.sendRedirect("student/home.jsp?user=new&username="+username);}
         if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp?user=new&username="+username);}

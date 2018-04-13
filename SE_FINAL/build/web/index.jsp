@@ -62,16 +62,28 @@
     try{
         String username = request.getParameter("username");
         String utype = request.getParameter("utype");
+        String password= request.getParameter("password");
+       
         Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
         String q = "select * from logintable where username=? and password=? and utype=?";
         PreparedStatement pst = con.prepareStatement(q);
         pst.setString(1,username);
-        pst.setString(2,request.getParameter("password"));
+        pst.setString(2,password);
         pst.setString(3,utype);
         ResultSet rs = pst.executeQuery();      
         if(rs.next()){
-                
+            
+             Cookie cookie_username = new Cookie("username",username);
+        Cookie cookie_password = new Cookie("password",password);
+        cookie_username.setMaxAge(60*60);
+        cookie_password.setMaxAge(60*60);
+        response.addCookie(cookie_username);
+        response.addCookie(cookie_password);
+        Cookie cookie_utype = new Cookie("utype",utype);
+        cookie_utype.setMaxAge(60*60);
+        response.addCookie(cookie_utype);
+            
                 if("Student".equals(utype)){response.sendRedirect("student/home.jsp?user=old&username="+username);}
                 if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp?user=old&username="+username);}
                

@@ -19,7 +19,27 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
-    <body style="margin-top: -40px;">
+     <body style="margin-top: -40px;">
+            <%
+                Cookie cookie = null;
+         Cookie[] cookies = null;
+         
+         // Get an array of Cookies associated with the this domain
+         cookies = request.getCookies();
+         
+         if( cookies != null ) {
+            out.println("<h2> Found Cookies </h2>");
+            
+            for (int i = 0; i < cookies.length; i++) {
+               cookie = cookies[i];
+               out.print("Name : " + cookie.getName( ) + ",  ");
+               out.print("Value: " + cookie.getValue( )+" <br/>");
+            }
+         } else {
+            out.println("<h2>No cookies founds</h2>");
+         }
+            %>
+           
             <nav class="navbar navbar-dark  bg-dark">
             <a class="navbar-brand" href="#"><img src="../Images/icon.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
             <ul class="nav nav-tabs">
@@ -34,18 +54,5 @@
             </li>
             </ul>
             </nav>
-        <form class="form-signin" action="home.jsp" method="post" align="center" >
-                      <%
-                            int subno = Integer.parseInt(request.getParameter("subno"));
-                            for(int i=1;i<=subno;i++){
-                        %>
-                        <input type="text" id="inputsub" class="form-control" placeholder="Sub <%= i%>" name="sub<%= i %>" required>
-                        <br/>
-                        
-                        <%
-                            }
-                        %>
-        <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
-                        </form>
     </body>
 </html>
