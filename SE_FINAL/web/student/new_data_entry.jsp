@@ -39,7 +39,7 @@
         <%
             String username = request.getParameter("username");
 
-       out.println(" <input type='text' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
+       out.println(" <input type='hidden' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
             %>
         <br/>
         <input type="number" id="inputno" class="form-control" placeholder="Enrollment no" name="enrollment" required autofocus>
