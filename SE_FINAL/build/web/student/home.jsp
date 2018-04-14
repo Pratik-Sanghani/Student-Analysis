@@ -35,17 +35,26 @@
             </ul>
             </nav>
         <%
+            
        Cookie cookie = null;
          Cookie[] cookies = null;
          
          // Get an array of Cookies associated with the this domain
          cookies = request.getCookies();
-         
-         if( cookies != null ) {
-            
-            try{
-           String username = request.getParameter("username");
+         String username = null;
            String user = request.getParameter("user");
+         if( cookies != null ) {
+            String ck_password;
+                            for (int i = 0; i < cookies.length; i++) {
+                                cookie = cookies[i];
+                                if("password".equals(cookie.getName( ))){
+                                        ck_password = cookie.getValue( );}
+                                if("username".equals(cookie.getName())){
+                                    username = cookie.getValue();
+                                }
+                            }
+            try{
+           
           Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
         String q = "select * from studentdata where username=?";
@@ -55,7 +64,7 @@
         while(rs.next()){
             String name=rs.getString("name");
             String enrollment = rs.getString("enrollment");
-        
+           
            if("old".equals(user)){
         %>
         <div class="alert alert-info" role="alert" >
@@ -80,16 +89,12 @@
                     </div>
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                         <%
-                            String ck_password;
-                            for (int i = 0; i < cookies.length; i++) {
-                                cookie = cookies[i];
-                                if("password".equals(cookie.getName( ))){
-                                        ck_password = cookie.getValue( );}
-                            }
-                            out.println("<h3>Enrollment No. : "+enrollment+"</h3>");
                             
+                            
+                            out.println("<h3>Enrollment No. : "+enrollment+"</h3>");
+             
                         %>
-                        <form class="form-signin" action="add_sub.jsp" method="post" align="center" >
+                        <form class="form-signin" action="add_sub.jsp?enrollment=<%= enrollment %>" method="post" align="center" >
                             <br/>
            <h2 class="form-signin-heading" align="center">Please Enter password </h2>
        

@@ -26,7 +26,7 @@
             <a class="navbar-brand" href="#"><img src="../Images/icon.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
             <ul class="nav nav-tabs">
             <li class="nav-item">
-            <a class="nav-link active" href="#">Home</a>
+            <a class="nav-link active" href="home.jsp?user=old">Home</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="signout.jsp">Sign Out</a>
@@ -38,6 +38,8 @@
             </nav>
          
             <%
+                String ck_enrollment = request.getParameter("enrollment");
+                
                String password= request.getParameter("password");
                Cookie cookie = null;
                 Cookie[] cookies = null;
@@ -54,8 +56,8 @@
                                                 %>
                                                 
                                                 
-<form class="form-signin" action="add_sub.jsp" method="post" align="center" >
-        <h2 class="form-signin-heading" align="center">Please Sign In </h2>
+        <form class="form-signin" action="../add_sub?enrollment=<%= ck_enrollment %>" method="post" align="center" >
+        <h2 class="form-signin-heading" align="center" style="font-family: Arial;">Enter Your Grade...</h2>
         <div align="center" >
         <select id="ddl" onchange="configureDropDownLists(this,document.getElementById('ddl2'))" class="btn btn-light btn-outline-dark dropdown-toggle"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="dd1" required>
             <option value=""></option>
@@ -78,11 +80,9 @@
         <br/>   
         <button class="btn btn-lg btn-info btn-block " type="submit">Save !!</button>
         <br/>
-</form>
-
-
-                                                
-                                                <%
+</form>                    
+                     <%
+                         
                                         }
                                         else{out.println("Wrong Password...");}
                                 }
