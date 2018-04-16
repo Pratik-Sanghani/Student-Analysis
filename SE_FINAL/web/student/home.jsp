@@ -16,6 +16,7 @@
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'  crossorigin='anonymous'></script>           
         <link href="../css/signin.css" rel="stylesheet">
         <link href="../css/bootstrap.css" rel="stylesheet">
+        <link href="../css/hr_tag.css" rel="stylesheet">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -78,7 +79,7 @@
                 <div class="list-group" id="list-tab" role="tablist">
                     <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Display Grade history</a>
                     <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Add Marks</a>
-                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Update Marks</a>
+                    <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Your Details</a>
                 </div>
             </div>
             <div class="col-8">
@@ -124,6 +125,7 @@
                                         j++;
                                 }
 %>
+  <hr class="style18">
   </tbody>
 </table>
   <%
@@ -149,7 +151,18 @@
         <button class="btn btn-lg btn-info btn-block " type="submit">Go !!</button>
         </form>
                     </div>
-                    <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
+                            <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
+                                <%
+                                    Connection con3=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
+                                    String q3 = "select * from studentdata where username=?";
+                                    PreparedStatement pst3 = con3.prepareStatement(q3);
+                                    pst3.setString(1,username);
+                                    ResultSet rs3 = pst3.executeQuery();
+                                    while(rs3.next()){
+                                        
+                                    }
+                                %>
+                            </div>
                 </div>
             </div>
         </div>
