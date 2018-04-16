@@ -101,23 +101,27 @@
         <th scope="col">Semester_<%= i %></th>
       <th scope="col">Subject</th>
       <th scope="col">Grade</th>
-      <th scope="col" colspan="2">operation</th>
+      <th scope="col" colspan="2">Operation</th>
     </tr>
   </thead>
   <tbody>
       <%
+          int j=1;
                                 while(rs2.next()){
+                                    
                                     %>
+                                    
     <tr>
-      <th scope="row">#</th>
+        <th scope="row"><%= j %></th>
       <td><%= rs2.getString("sub")%></td>
       <td><%= rs2.getString("grade")%></td>
       <td><a href="edit_mark.jsp">Edit</a></td>
-      <td><a href="delete_mark.jsp">Delete</a></td>
+      <td><a href="delete_mark.jsp?sub=<%= rs2.getString("sub") %>">Delete</a></td>
     </tr>
 
                                     
                                     <%
+                                        j++;
                                 }
 %>
   </tbody>

@@ -4,14 +4,24 @@
     Author     : Pratik
 --%>
 
+<%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Final Project</title>
     </head>
-    <body>
-        <h1>Hello World!</h1>
+    <body >
+        
+        <%
+           String sub = request.getParameter("sub");
+           Class.forName("com.mysql.jdbc.Driver");
+        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
+        String q = "delete from markdata where sub=?";
+        PreparedStatement pst = con.prepareStatement(q);
+        pst.setString(1, sub);
+        pst.executeUpdate();
+        response.sendRedirect("home.jsp?user=old");
+        %>
     </body>
 </html>
