@@ -85,7 +85,48 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                         <%
+                                Connection con2=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
+
+                            for (int i=1;i<9;i++){
+                                try{
+                                String q2="select * from markdata where enrollment="+enrollment +" and sem="+i;
+                                PreparedStatement pst2 = con2.prepareStatement(q2);
+                                ResultSet rs2 = pst2.executeQuery();
+                                %>
+                                
+                                    
+<table class="table">
+   <thead class="thead-light">
+    <tr>
+        <th scope="col">Semester_<%= i %></th>
+      <th scope="col">Subject</th>
+      <th scope="col">Grade</th>
+      <th scope="col" colspan="2">operation</th>
+    </tr>
+  </thead>
+  <tbody>
+      <%
+                                while(rs2.next()){
+                                    %>
+    <tr>
+      <th scope="row">#</th>
+      <td><%= rs2.getString("sub")%></td>
+      <td><%= rs2.getString("grade")%></td>
+      <td><a href="edit_mark.jsp">Edit</a></td>
+      <td><a href="delete_mark.jsp">Delete</a></td>
+    </tr>
+
+                                    
+                                    <%
+                                }
+%>
+  </tbody>
+</table>
+  <%
+                                out.print("<br>");
+                            }catch(Exception e){out.print(e);}}
                         %>
+
                     </div>
                     <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                         <%
@@ -112,7 +153,7 @@
         <%
             
             }
-           
+
                    }
                    if("new".equals(user)){
                 out.print("<div class='alert alert-info' role='alert' >");

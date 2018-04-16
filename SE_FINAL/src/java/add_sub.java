@@ -78,7 +78,7 @@ public class add_sub extends HttpServlet {
                                 if("password".equals(cookie.getName( ))){
                                         ck_password = cookie.getValue( );}}}
         
-        response.sendRedirect("student/add_sub.jsp?password="+ck_password);
+        response.sendRedirect("student/add_sub.jsp?password="+ck_password+"&enrollment="+enrollment);
         }catch(Exception e){out.print(e);}
             out.println("</body>");
             out.println("</html>");
