@@ -5,10 +5,13 @@
         <group>
             <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/student/add_sub.jsp</file>
             <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/src/java/add_sub.java</file>
+            <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/student/edit_mark.jsp</file>
             <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/student/home.jsp</file>
             <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/index.jsp</file>
             <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/signup.jsp</file>
+            <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/student/delete_mark.jsp</file>
             <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/student/new_data_entry.jsp</file>
+            <file>file:/C:/Users/Pratik/Documents/se_project_github_deployment/SE_FINAL/web/js/sub.js</file>
         </group>
     </open-files>
 </project-private>

@@ -26,7 +26,7 @@
             <a class="navbar-brand" href="#"><img src="../Images/icon.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
             <ul class="nav nav-tabs">
             <li class="nav-item">
-            <a class="nav-link active" href="home.jsp?user=old">Home</a>
+            <a class="nav-link " href="home.jsp?user=old">Home</a>
             </li>
             <li class="nav-item">
             <a class="nav-link" href="signout.jsp">Sign Out</a>
