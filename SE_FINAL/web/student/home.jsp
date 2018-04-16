@@ -116,8 +116,8 @@
         <th scope="row"><%= j %></th>
       <td><%= rs2.getString("sub")%></td>
       <td><%= rs2.getString("grade")%></td>
-      <td><a href="edit_mark.jsp">Edit</a></td>
-      <td><a href="delete_mark.jsp?sub=<%= rs2.getString("sub") %>">Delete</a></td>
+      <td><a href="edit_mark.jsp?sub=<%= rs2.getString("sub") %>&enrollment=<%= enrollment %>">Edit</a></td>
+      <td><a href="delete_mark.jsp?sub=<%= rs2.getString("sub") %>&enrollment=<%= enrollment %>">Delete</a></td>
     </tr>
 
                                     
@@ -143,7 +143,7 @@
                         %>
                         <form class="form-signin" action="add_sub.jsp?enrollment=<%= enrollment %>" method="post" align="center" >
                             <br/>
-           <h2 class="form-signin-heading" align="center">Please Enter password </h2>
+           <h2 class="form-signin-heading" align="center">Please Enter Password </h2>
        
         <br/>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>

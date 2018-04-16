@@ -15,11 +15,13 @@
         
         <%
            String sub = request.getParameter("sub");
+           String enrollment = request.getParameter("enrollment");
            Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
-        String q = "delete from markdata where sub=?";
+        String q = "delete from markdata where sub=? and enrollment=?";
         PreparedStatement pst = con.prepareStatement(q);
         pst.setString(1, sub);
+        pst.setString(2, enrollment);
         pst.executeUpdate();
         response.sendRedirect("home.jsp?user=old");
         %>
