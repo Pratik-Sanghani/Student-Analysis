@@ -159,7 +159,19 @@
                                     pst3.setString(1,username);
                                     ResultSet rs3 = pst3.executeQuery();
                                     while(rs3.next()){
-                                        
+                                        %>
+                                        <div class="alert alert-warning" role="alert" ><br>
+                                            <h3 style="font-family: Comic Sans MS"><br>
+                                                Enrollment No. : <%= rs3.getString("enrollment") %><br>
+                                                Name : <%= rs3.getString("name") %><br>
+                                                UserName : <%= rs3.getString("username") %><br>
+                                                Semester : <%= rs3.getString("sem") %><br>
+                                                Branch : <%= rs3.getString("branch") %><br>
+                                                Year of Graduation : <%= rs3.getString("gyear") %><br>
+                                            </h3>
+                                        </div>
+                                            *Contact <b>Administrator</b> to change your Details....
+                                        <%
                                     }
                                 %>
                             </div>
