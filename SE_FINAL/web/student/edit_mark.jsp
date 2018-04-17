@@ -38,33 +38,29 @@
             </nav>
         <%
             try{
-            String sub = request.getParameter("sub");
-            String enrollment = request.getParameter("enrollment");
-            
-             Class.forName("com.mysql.jdbc.Driver");
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
-        
-        
+                String sub = request.getParameter("sub");
+                String enrollment = request.getParameter("enrollment");
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
             %>
             <form class="form-signin" action="edit_mark.jsp?sub=<%= sub %>&enrollment=<%= enrollment %>" method="post" align="center" >
-        <h2 class="form-signin-heading" align="center">Update Your Grade...</h2><br/>
-        
-             <br/>
-             <input type="text" id="inputsub" class="form-control" placeholder="Subject" name="subject" value="<%= sub %>" required >
-        <br/>
-        <input type="text" id="inputgrade" class="form-control" placeholder="New Grade" name="grade" required autofocus>
-         <br/>
-        <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
-    </form>
+                <h2 class="form-signin-heading" align="center">Update Your Grade...</h2><br/>
+                <br/>
+                <input type="text" id="inputsub" class="form-control" placeholder="Subject" name="subject" value="<%= sub %>" required >
+                <br/>
+                <input type="text" id="inputgrade" class="form-control" placeholder="New Grade" name="grade" required autofocus>
+                <br/>
+                <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
+            </form>
              <%
-                 String grade = request.getParameter("grade");
-               String q = "UPDATE markdata SET grade=? where sub=? and enrollment=?";
-        PreparedStatement pst = con.prepareStatement(q);
-        pst.setString(1, grade);
-        pst.setString(2, sub);
-        pst.setString(3, enrollment);
-        pst.executeUpdate();  
-        response.sendRedirect("home.jsp?user=old");
+                String grade = request.getParameter("grade");
+                String q = "UPDATE markdata SET grade=? where sub=? and enrollment=?";
+                PreparedStatement pst = con.prepareStatement(q);
+                pst.setString(1, grade);
+                pst.setString(2, sub);
+                pst.setString(3, enrollment);
+                pst.executeUpdate();  
+                response.sendRedirect("home.jsp?user=old");
                 }catch(Exception e){}
              %>
     </body>

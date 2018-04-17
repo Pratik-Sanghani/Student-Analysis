@@ -36,24 +36,23 @@
             </ul>
             </nav>
       
-      <form class="form-signin" action="signup.jsp" method="post" align="center" >
-        <h2 class="form-signin-heading" align="center">Please Sign Up </h2>
-        <div align="center" >
-        <select class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="utype" required >
-            <option value="#">---Select---</option>
-            <option value="Student">Student</option>
-            <option value="Professor">Professor</option>
-        </select>
-        </div>
-        <br/>
-        <input type="text" id="inputusername" class="form-control" placeholder="UserName" name="username" required autofocus>
-        <br/>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+            <form class="form-signin" action="signup.jsp" method="post" align="center" >
+                <h2 class="form-signin-heading" align="center">Please Sign Up </h2>
+                <div align="center" >
+                    <select class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="utype" required >
+                        <option value="#">---Select---</option>
+                        <option value="Student">Student</option>
+                        <option value="Professor">Professor</option>
+                    </select>
+                </div>
+                <br/>
+                <input type="text" id="inputusername" class="form-control" placeholder="UserName" name="username" required autofocus>
+                <br/>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
           
-        <button class="btn btn-lg btn-success btn-block " type="submit">Sign Up</button>
-</form>        
-        
-        
+                <button class="btn btn-lg btn-success btn-block " type="submit">Sign Up</button>
+            </form>        
+              
 <%   
         String username= request.getParameter("username");
        String password = request.getParameter("password");
@@ -83,7 +82,7 @@
         if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp?user=new&username="+username);}
   %>
         
-  <%@include file="footer.jsp" %>
+    <%@include file="footer.jsp" %>
     </body>
 </html>
 

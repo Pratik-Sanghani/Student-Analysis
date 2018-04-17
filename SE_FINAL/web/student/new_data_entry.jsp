@@ -39,9 +39,8 @@
         <h2 class="form-signin-heading" align="center">Please Enter your Details...</h2><br/>
         <%
             String username = request.getParameter("username");
-
-       out.println(" <input type='hidden' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
-            %>
+            out.println(" <input type='hidden' id='inputuname' class='form-control' value='"+username+"' name='username' required>");
+        %>
         <br/>
         <input type="number" id="inputno" class="form-control" placeholder="Enrollment no" name="enrollment" required autofocus>
         <br/>
@@ -54,27 +53,25 @@
         <input type="number" id="inputgyear" class="form-control" placeholder="Year of Graduation" name="gyear" required>
          <br/>
         <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
-    </form>        
-        
-            <%
+    </form>          
+    <%
         try{
             Cookie cookie_enrollment = new Cookie("enrollment",request.getParameter("enrollment"));
             cookie_enrollment.setMaxAge(60*60);
             response.addCookie(cookie_enrollment);
-          Class.forName("com.mysql.jdbc.Driver");
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
-        String q = "insert into studentdata values(?,?,?,?,?,?)";
-        PreparedStatement pst = con.prepareStatement(q);
-        pst.setString(1,username);
-        pst.setString(2,request.getParameter("enrollment"));
-        pst.setString(3,request.getParameter("name"));
-        pst.setInt(4,Integer.parseInt(request.getParameter("sem")));
-        pst.setString(5,request.getParameter("branch"));
-        pst.setInt(6,Integer.parseInt(request.getParameter("gyear")));
-        pst.executeUpdate();
-        response.sendRedirect("home.jsp?user=old&username="+username);
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
+            String q = "insert into studentdata values(?,?,?,?,?,?)";
+            PreparedStatement pst = con.prepareStatement(q);
+            pst.setString(1,username);
+            pst.setString(2,request.getParameter("enrollment"));
+            pst.setString(3,request.getParameter("name"));
+            pst.setInt(4,Integer.parseInt(request.getParameter("sem")));
+            pst.setString(5,request.getParameter("branch"));
+            pst.setInt(6,Integer.parseInt(request.getParameter("gyear")));
+            pst.executeUpdate();
+            response.sendRedirect("home.jsp?user=old&username="+username);
         }catch(Exception e){out.print(e);}
-            %>
-       
+    %>     
     </body>
 </html>

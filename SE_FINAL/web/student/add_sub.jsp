@@ -38,22 +38,21 @@
             </nav>
          
             <%
-                String ck_enrollment = request.getParameter("enrollment");
-                
-               String password= request.getParameter("password");
-               Cookie cookie = null;
+                String ck_enrollment = request.getParameter("enrollment");              
+                String password= request.getParameter("password");
+                Cookie cookie = null;
                 Cookie[] cookies = null;
                 String ck_password;
-         // Get an array of Cookies associated with the this domain
-         cookies = request.getCookies();
+                // Get an array of Cookies associated with the this domain
+                cookies = request.getCookies();
          
-         if( cookies != null ) {
-                            for (int i = 0; i < cookies.length; i++) {
-                                cookie = cookies[i];
-                                if("password".equals(cookie.getName( ))){
-                                        ck_password = cookie.getValue( );
-                                        if(password.equals(ck_password)){
-                                                %>
+                if( cookies != null ) {
+                    for (int i = 0; i < cookies.length; i++) {
+                        cookie = cookies[i];
+                            if("password".equals(cookie.getName( ))){
+                                ck_password = cookie.getValue( );
+                                    if(password.equals(ck_password)){
+            %>
                                                 
                                                 
         <form class="form-signin" action="../add_sub?enrollment=<%= ck_enrollment %>" method="post" align="center" >
@@ -81,16 +80,13 @@
         <button class="btn btn-lg btn-info btn-block " type="submit">Save !!</button>
         <br/>
 </form>                    
-                     <%
-                         
-                                        }
+            <%
+                                    }
                                         else{out.println("Wrong Password...");}
                                 }
-                            }
-                            
-                            
-         }
-         else{out.print("Please Log in first...");}
+                            }                            
+                }
+                else{out.print("Please Log in first...");}
             %>
     </body>
 </html>
