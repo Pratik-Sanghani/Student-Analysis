@@ -71,7 +71,7 @@
             pst.setInt(6,Integer.parseInt(request.getParameter("gyear")));
             pst.executeUpdate();
             response.sendRedirect("home.jsp?user=old&username="+username);
-        }catch(Exception e){out.print(e);}
+        }catch(Exception e){}
     %>     
     </body>
 </html>
