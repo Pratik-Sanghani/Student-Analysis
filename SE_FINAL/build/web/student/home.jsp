@@ -36,37 +36,39 @@
             </ul>
             </nav>
         <%
-            
-       Cookie cookie = null;
-         Cookie[] cookies = null;
-         
-         // Get an array of Cookies associated with the this domain
-         cookies = request.getCookies();
-         String username = null;
-           String user = request.getParameter("user");
-         if( cookies != null ) {
-            String ck_password;
-                            for (int i = 0; i < cookies.length; i++) {
-                                cookie = cookies[i];
-                                if("password".equals(cookie.getName( ))){
-                                        ck_password = cookie.getValue( );}
-                                if("username".equals(cookie.getName())){
-                                    username = cookie.getValue();
-                                }
-                            }
-            try{
-           
-          Class.forName("com.mysql.jdbc.Driver");
-        Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
-        String q = "select * from studentdata where username=?";
-        PreparedStatement pst = con.prepareStatement(q);
-        pst.setString(1,username);
-        ResultSet rs = pst.executeQuery();
-        while(rs.next()){
-            String name=rs.getString("name");
-            String enrollment = rs.getString("enrollment");
-           
-           if("old".equals(user)){
+            Cookie cookie = null;
+            Cookie[] cookies = null;
+            // Get an array of Cookies associated with the this domain
+            cookies = request.getCookies();
+            String username = null;
+            String user = request.getParameter("user");
+            if( cookies != null ) 
+            {
+                String ck_password;
+                for (int i = 0; i < cookies.length; i++) {
+                cookie = cookies[i];
+                if("password".equals(cookie.getName( )))
+                {
+                    ck_password = cookie.getValue( );}
+                    if("username".equals(cookie.getName()))
+                    {
+                        username = cookie.getValue();
+                    }
+                }
+            try
+            {
+                Class.forName("com.mysql.jdbc.Driver");
+                Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
+                String q = "select * from studentdata where username=?";
+                PreparedStatement pst = con.prepareStatement(q);
+                pst.setString(1,username);
+                ResultSet rs = pst.executeQuery();
+                while(rs.next())
+                {
+                    String name=rs.getString("name");
+                    String enrollment = rs.getString("enrollment");
+                    if("old".equals(user))
+                    {
         %>
         <div class="alert alert-info" role="alert" >
         <h3 style="font-family: Comic Sans MS">Welcome Back , <%= name%></h3>
@@ -86,71 +88,62 @@
                 <div class="tab-content" id="nav-tabContent">
                     <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
                         <%
-                                Connection con2=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
-
+                            Connection con2=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
                             for (int i=1;i<9;i++){
-                                try{
+                            try
+                            {
                                 String q2="select * from markdata where enrollment="+enrollment +" and sem="+i;
                                 PreparedStatement pst2 = con2.prepareStatement(q2);
                                 ResultSet rs2 = pst2.executeQuery();
-                                %>
-                                
-                                    
-<table class="table">
-   <thead class="thead-light">
-    <tr>
-        <th scope="col">Semester_<%= i %></th>
-      <th scope="col">Subject</th>
-      <th scope="col">Grade</th>
-      <th scope="col" colspan="2">Operation</th>
-    </tr>
-  </thead>
-  <tbody>
-      <%
-          int j=1;
-                                while(rs2.next()){
-                                    
-                                    %>
-                                    
-    <tr>
-        <th scope="row"><%= j %></th>
-      <td><%= rs2.getString("sub")%></td>
-      <td><%= rs2.getString("grade")%></td>
-      <td><a href="edit_mark.jsp?sub=<%= rs2.getString("sub") %>&enrollment=<%= enrollment %>">Edit</a></td>
-      <td><a href="delete_mark.jsp?sub=<%= rs2.getString("sub") %>&enrollment=<%= enrollment %>">Delete</a></td>
-    </tr>
-
-                                    
-                                    <%
-                                        j++;
-                                }
-%>
-  <hr class="style18">
-  </tbody>
-</table>
-  <%
-                                out.print("<br>");
+                        %>
+                                           
+                        <table class="table">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th scope="col">Semester_<%= i %></th>
+                                    <th scope="col">Subject</th>
+                                    <th scope="col">Grade</th>
+                                    <th scope="col" colspan="2">Operation</th>
+                                </tr>
+                            </thead>
+                        <tbody>
+                        <%
+                            int j=1;
+                            while(rs2.next())
+                            {
+                        %>
+                        <tr>
+                            <th scope="row"><%= j %></th>
+                            <td><%= rs2.getString("sub")%></td>
+                            <td><%= rs2.getString("grade")%></td>
+                            <td><a href="edit_mark.jsp?sub=<%= rs2.getString("sub") %>&enrollment=<%= enrollment %>">Edit</a></td>
+                            <td><a href="delete_mark.jsp?sub=<%= rs2.getString("sub") %>&enrollment=<%= enrollment %>">Delete</a></td>
+                        </tr>
+                        <%
+                                j++;
+                            }
+                        %>
+                        <hr class="style18">
+                        </tbody>
+                        </table>
+                        <%
+                            out.print("<br>");
                             }catch(Exception e){out.print(e);}}
                         %>
-
-                    </div>
-                    <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
+                        </div>
+                        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">
                         <%
-                            
-                            
                             out.println("<h3>Enrollment No. : "+enrollment+"</h3>");
-             
                         %>
                         <form class="form-signin" action="add_sub.jsp?enrollment=<%= enrollment %>" method="post" align="center" >
                             <br/>
-           <h2 class="form-signin-heading" align="center">Please Enter Password </h2>
-       
-        <br/>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
-           <br/>
-        <button class="btn btn-lg btn-info btn-block " type="submit">Go !!</button>
-        </form>
-                    </div>
+                            <h2 class="form-signin-heading" align="center">Please Enter Password </h2>
+                            <br/>
+                            <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password" required>
+                            <br/>
+                            <button class="btn btn-lg btn-info btn-block " type="submit">Go !!</button>
+                        </form>
+                        </div>
                             <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">
                                 <%
                                     Connection con3=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
@@ -158,8 +151,9 @@
                                     PreparedStatement pst3 = con3.prepareStatement(q3);
                                     pst3.setString(1,username);
                                     ResultSet rs3 = pst3.executeQuery();
-                                    while(rs3.next()){
-                                        %>
+                                    while(rs3.next())
+                                    {
+                                %>
                                         <div class="alert alert-warning" role="alert" ><br>
                                             <h3 style="font-family: Comic Sans MS"><br>
                                                 Enrollment No. : <%= rs3.getString("enrollment") %><br>
@@ -181,7 +175,7 @@
         </div>
         <%
             
-            }
+                }
 
                    }
                    if("new".equals(user)){
@@ -190,14 +184,10 @@
                 out.print("</div>");
                 }
 
-            }catch(Exception e){out.print(e);}
-            
-            
+            }catch(Exception e){out.print(e);}  
          } else {
             out.println("<h2>No cookies founds</h2>");
          }
        %> 
-            
-       
     </body>
 </html>

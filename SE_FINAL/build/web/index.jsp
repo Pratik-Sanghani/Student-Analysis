@@ -85,7 +85,7 @@
         response.addCookie(cookie_utype);
             
                 if("Student".equals(utype)){response.sendRedirect("student/home.jsp?user=old&username="+username);}
-                if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp?user=old&username="+username);}
+                if("Professor".equals(utype)){response.sendRedirect("professor/teacher_home.jsp?user=old&username="+username);}
                
             }
          else{out.println(" <h3 align='center'  style='color: red'>Please Select User Type....</h3>");}
