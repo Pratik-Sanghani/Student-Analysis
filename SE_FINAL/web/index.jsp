@@ -19,6 +19,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <body style=" margin-top: -40px; ">
             <nav class="navbar navbar-dark  bg-dark">
             <a class="navbar-brand" href="#"><img src="Images/icon.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
@@ -56,6 +57,7 @@
         <br/>
         
 </form>
+
         <% 
     try{
         String username = request.getParameter("username");
