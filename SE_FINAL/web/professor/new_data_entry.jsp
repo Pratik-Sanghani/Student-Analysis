@@ -49,7 +49,7 @@
         <button class="btn btn-lg btn-success btn-block " type="submit">Update</button>
     </form>        
         
-            <%
+        <%
         try{
           Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
@@ -61,7 +61,7 @@
         pst.executeUpdate();
         response.sendRedirect("home.jsp?user=old");
         }catch(Exception e){out.print("");}
-            %>
+        %>
        
     </body>
 </html>

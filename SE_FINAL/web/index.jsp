@@ -7,8 +7,6 @@
 <%@page import="java.sql.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,6 +19,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
+
     <body style=" margin-top: -40px; ">
             <nav class="navbar navbar-dark  bg-dark">
             <a class="navbar-brand" href="#"><img src="Images/icon.png" width="30" height="30" alt="SPHP" >Student Marks Analysis</a>
@@ -58,6 +57,7 @@
         <br/>
         
 </form>
+
         <% 
     try{
         String username = request.getParameter("username");
@@ -85,7 +85,7 @@
         response.addCookie(cookie_utype);
             
                 if("Student".equals(utype)){response.sendRedirect("student/home.jsp?user=old&username="+username);}
-                if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp?user=old&username="+username);}
+                if("Professor".equals(utype)){response.sendRedirect("professor/teacher_home.jsp?user=old&username="+username);}
                
             }
          else{out.println(" <h3 align='center'  style='color: red'>Please Select User Type....</h3>");}

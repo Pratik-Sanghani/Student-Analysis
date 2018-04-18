@@ -2,6 +2,22 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group/>
+=======
+        <group>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/professor/new_data_entry.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/student/delete_mark.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/index.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/footer.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/js/sub.js</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/student/edit_mark.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/student/new_data_entry.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/professor/teacher_home.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/signup.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/student/add_sub.jsp</file>
+            <file>file:/E:/Student-Analysis/SE_FINAL/web/student/home.jsp</file>
+        </group>
+>>>>>>> 1cf6d27c8b8a72132aec56ac8373da5f3b1893fd
     </open-files>
 </project-private>
