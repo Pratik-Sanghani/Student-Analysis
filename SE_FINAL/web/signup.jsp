@@ -80,7 +80,7 @@
         response.addCookie(cookie_utype);
        }catch(Exception e){out.println();}
         if("Student".equals(utype)){response.sendRedirect("student/home.jsp?user=new&username="+username);}
-        if("Professor".equals(utype)){response.sendRedirect("professor/home.jsp?user=new&username="+username);}
+        if("Professor".equals(utype)){response.sendRedirect("professor/teacher_home.jsp?user=new&username="+username);}
   %>
         
   <%@include file="footer.jsp" %>

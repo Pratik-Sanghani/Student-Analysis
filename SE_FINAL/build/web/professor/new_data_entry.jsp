@@ -59,7 +59,7 @@
         pst.setString(2,request.getParameter("name"));
         pst.setString(3,request.getParameter("branch"));
         pst.executeUpdate();
-        response.sendRedirect("home.jsp?user=old");
+        response.sendRedirect("teacher_home.jsp?user=old");
         }catch(Exception e){out.print("");}
         %>
        

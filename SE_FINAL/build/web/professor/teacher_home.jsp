@@ -135,9 +135,11 @@
                             out.print("<br>");
                             }catch(Exception e){out.print(e);}}
                         %>
+                        <hr class="style13" style="color: red;">
                         </div>         
                    </div>
                 </div>
+                        
             </div>
         </div>
         <%
