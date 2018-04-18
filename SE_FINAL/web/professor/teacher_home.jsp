@@ -104,10 +104,7 @@
                                 PreparedStatement pst2 = con2.prepareStatement(q2);
                                 ResultSet rs2 = pst2.executeQuery();
                         %>
-                         <!--div class="alert alert-info" role="alert" >
-                                <h3>Enrollment no. <%= enrollment %> </h3>
-                            </div-->
-                                           
+        
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
