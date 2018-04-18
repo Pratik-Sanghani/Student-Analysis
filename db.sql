@@ -44,6 +44,7 @@ CREATE TABLE `markdata` (
   `grade` varchar(2) NOT NULL,
   `sem` int(11) NOT NULL,
   `gyear` int(11) NOT NULL
+  `spi` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------

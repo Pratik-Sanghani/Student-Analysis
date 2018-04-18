@@ -50,6 +50,7 @@ public class add_sub extends HttpServlet {
                            String t_sub = request.getParameter("ddl2");
                            int sem = Integer.parseInt(t_sem.substring(1));
                            String grade = request.getParameter("grade");
+                           double spi = Double.parseDouble(request.getParameter("spi"));
                            Class.forName("com.mysql.jdbc.Driver");
         Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
         String q = "select * from studentdata where enrollment="+enrollment;
@@ -57,13 +58,14 @@ public class add_sub extends HttpServlet {
         ResultSet rs =  pst1.executeQuery();
         while(rs.next()){gyear = rs.getInt("gyear");}
         try{
-        String q1 = "insert into markdata values(?,?,?,?,?)";
+        String q1 = "insert into markdata values(?,?,?,?,?,?)";
         PreparedStatement pst = con.prepareStatement(q1);
         pst.setString(1,enrollment);
         pst.setString(2,t_sub);
         pst.setString(3,grade);
         pst.setInt(4,sem);
         pst.setInt(5,gyear);
+        pst.setDouble(6, spi);
         pst.executeUpdate();
         
         Cookie cookie = null;

@@ -87,13 +87,13 @@
                         {
         %>
                 
-            <div class="list-group">   
+        <div class="list-group" style="width: 75%">   
             <div  class="row">
-                <div align="center" class="col-12" style="margin-left: 275px">
+                <div align="center" class="col-12" style="margin-left: 190px">
                 <div  class="tab-content" id="nav-tabContent">
                     <div  class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">
-                        <div class="alert alert-info" role="alert" >
-                                <h3>Enrollment no. <%= enrollment %> </h3>
+                        <div class="alert alert-danger" role="alert" >
+                                <h3>Enrollment Number : <%= enrollment %> </h3>
                             </div>
                         <%
                             Connection con2=DriverManager.getConnection("jdbc:mysql://localhost:3306/db","root","");
@@ -115,10 +115,18 @@
                             </thead>
                         <tbody>
                         <%
-                            int j=1;
+                            int j=1,k=0;
                             while(rs2.next())
                             {
+                                while(k<1){
                         %>
+                        <div class="alert alert-success" role="alert" >
+                            <h3 style="font-family: Comic Sans MS">SPI for Semester <%= i %> : <%= rs2.getDouble("spi") %></h3>
+                        </div>
+                        <% 
+                           k++;
+                           }
+                         %>
                         <tr>
                             <th scope="row"><%= j %></th>
                             <td><%= rs2.getString("sub")%></td>

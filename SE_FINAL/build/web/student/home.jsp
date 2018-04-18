@@ -74,7 +74,7 @@
         <h3 style="font-family: Comic Sans MS">Welcome Back , <%= name%></h3>
         </div>
         
-        <div class="list-group">
+        <div class="list-group" style="width: 75%;">
             
         <div class="row">
             <div class="col-4">
@@ -95,8 +95,9 @@
                                 String q2="select * from markdata where enrollment="+enrollment +" and sem="+i;
                                 PreparedStatement pst2 = con2.prepareStatement(q2);
                                 ResultSet rs2 = pst2.executeQuery();
+                                
                         %>
-                                           
+                                         
                         <table class="table">
                             <thead class="thead-light">
                                 <tr>
@@ -107,11 +108,21 @@
                                 </tr>
                             </thead>
                         <tbody>
+                            <hr class="style18">
                         <%
-                            int j=1;
+                            int j=1,k=0;
                             while(rs2.next())
                             {
+                          
+                                while(k<1){
                         %>
+                        <div class="alert alert-success" role="alert" >
+                            <h3 style="font-family: Comic Sans MS">SPI for Semester <%= i %> : <%= rs2.getDouble("spi") %></h3>
+                        </div>
+                        <% 
+                           k++;
+                           }
+                         %>
                         <tr>
                             <th scope="row"><%= j %></th>
                             <td><%= rs2.getString("sub")%></td>
@@ -123,7 +134,7 @@
                                 j++;
                             }
                         %>
-                        <hr class="style18">
+                        
                         </tbody>
                         </table>
                         <%

@@ -77,7 +77,9 @@
         <br/>
         <label for="inputgrade" class="sr-only">Grade</label>
         <input type="text" id="inputgrade" class="form-control" placeholder="Grade" name="grade" required autofocus>
-        <br/>   
+        <br/> 
+        <input type="text" id="inputspi" class="form-control" placeholder="Semester SPI" name="spi" required >
+        <br/> 
         <button class="btn btn-lg btn-info btn-block " type="submit">Save !!</button>
         <br/>
 </form>                    
