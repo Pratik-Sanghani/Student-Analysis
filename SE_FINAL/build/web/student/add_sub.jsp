@@ -52,7 +52,8 @@
                                 cookie = cookies[i];
                                 if("password".equals(cookie.getName( ))){
                                         ck_password = cookie.getValue( );
-                                        if(password.equals(ck_password)){
+                                        if(password.equals(ck_password))
+                                        {
                                                 %>
                                                 
                                                 
@@ -86,11 +87,10 @@
                      <%
                          
                                         }
-                                        else{out.println("Wrong Password...");}
+                                        //else{out.println("Wrong Password...");}
                                 }
                             }
-                            
-                            
+                                        
          }
          else{out.print("Please Log in first...");}
             %>
